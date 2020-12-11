@@ -474,6 +474,7 @@ if ($qm_conf_ct > 0)
 ###########################################
 
 # set defaults for hard-coded variables
+$automaticallyConnectWebphone = true; # Nicolino101 added - when set to true - the calls the webphone to make connection automatically
 $conf_silent_prefix		= '5';	# vicidial_conferences prefix to enter silently and muted for recording
 $dtmf_silent_prefix		= '7';	# vicidial_conferences prefix to enter silently
 $HKuser_level			= '5';	# minimum vicidial user_level for HotKeys
@@ -13712,7 +13713,14 @@ $zi=2;
     </div>
 </form>
 
-
+<?php if($automaticallyConnectWebphone === true):?>
+<script>
+setTimeout(function(){
+    NoneInSessionCalL('LOGIN');return false;
+},1000);
+</script>
+<?php endif; ?>
+	
 </body>
 </html>
 
